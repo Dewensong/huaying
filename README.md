@@ -1,12 +1,6 @@
 <div align="center">
 
-<img src="frontend/public/favicon.svg" width="80" height="80" alt="话映 Logo" />
-
-# 话映 Huaying
-
-### AI 口播视频自动生成平台
-
-**文案 → AI 口播视频** 的自动化流水线
+<img src="docs/banner.svg" width="100%" alt="话映 Huaying - AI 口播视频自动生成平台" />
 
 [![Vue 3](https://img.shields.io/badge/Vue-3.x-42b883?logo=vue.js&logoColor=white)](https://vuejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -116,6 +110,13 @@
 </td>
 </tr>
 </table>
+
+## 🎥 产品演示
+
+<div align="center">
+  <img src="frontend/public/demo-product.gif" width="600" alt="话映产品演示" />
+  <p><sub>从文案到视频的完整创作流程</sub></p>
+</div>
 
 ## 🏗️ 系统架构
 

@@ -64,7 +64,7 @@ huaying/
 
 ```bash
 # 克隆仓库
-git clone https://github.com/dewens/huaying.git
+git clone https://github.com/Dewensong/huaying.git
 cd huaying
 
 # 后端
@@ -116,4 +116,4 @@ ALIYUN_SMS_ACCESS_KEY_SECRET=your_secret
 
 ---
 
-**维护者**: [Dewens](https://github.com/dewens)
+**维护者**: [Dewensong](https://github.com/Dewensong)

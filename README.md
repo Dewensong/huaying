@@ -122,14 +122,14 @@
 
 ```mermaid
 graph LR
-    A[用户浏览器] -->|HTTP/WebSocket| B[Express API 服务]
-    B -->|读写| C[(SQLite 数据库)]
-    B -->|调用| D[火山方舟 LLM]
-    B -->|调用| E[火山引擎 TTS]
-    B -->|调用| F[火山声音复刻]
-    B -->|合成| G[FFmpeg 视频流水线]
-    G -->|上传| H[腾讯云 COS]
-    B -->|发送| I[阿里云短信]
+    A[用户浏览器] --> B[Express API]
+    B --> C[(SQLite)]
+    B --> D[火山方舟 LLM]
+    B --> E[火山引擎 TTS]
+    B --> F[声音复刻]
+    B --> G[FFmpeg 视频合成]
+    G --> H[腾讯云 COS]
+    B --> I[阿里云短信]
 ```
 
 <details>

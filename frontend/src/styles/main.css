@@ -1,0 +1,385 @@
+/* tailwindcss 指令 - 由 PostCSS 插件处理 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #3B82F6;
+  --color-accent: #8B5CF6;
+  --color-cyan: #06B6D4;
+  --color-purple: #8B5CF6;
+  --color-pink: #EC4899;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Glassmorphism 效果 */
+.glass {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 蓝紫渐变文字 */
+.blue-purple-text {
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 紫红渐变文字 */
+.purple-pink-text {
+  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+}
+
+/* 蓝紫渐变呼吸效果 */
+@keyframes blue-purple-breathe {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3),
+                0 0 40px rgba(139, 92, 246, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.5),
+                0 0 80px rgba(139, 92, 246, 0.3);
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes particle {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+}
+
+/* 进度条动画 */
+@keyframes stripe {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes progress-glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+.animate-progress {
+  animation: progress-glow 1.5s ease-in-out infinite;
+}
+
+.animate-stripe {
+  animation: stripe 1.5s linear infinite;
+}
+
+/* 进度数字脉冲动画 */
+@keyframes number-pulse {
+  0%, 100% { transform: scale(1); text-shadow: 0 0 10px rgba(59, 130, 246, 0.3); }
+  50% { transform: scale(1.05); text-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+}
+
+.animate-number-pulse {
+  animation: number-pulse 2s ease-in-out infinite;
+}
+
+/* 步骤文字渐变动画 */
+@keyframes step-fade {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.animate-step-fade {
+  animation: step-fade 1.5s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-blue-purple-breathe {
+  animation: blue-purple-breathe 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* 滚动触发动画 */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 粒子效果容器 */
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: particle 15s linear infinite;
+}
+
+/* Element Plus 深色主题覆盖 */
+.el-button--primary {
+  --el-button-bg-color: #3B82F6;
+  --el-button-border-color: #3B82F6;
+  --el-button-hover-bg-color: #2563EB;
+  --el-button-hover-border-color: #2563EB;
+}
+
+.el-input__wrapper {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.el-dialog {
+  --el-dialog-bg-color: #1E293B;
+  border-radius: 16px !important;
+}
+
+/* 视频详情抽屉 - 防止横向滚动 */
+.video-detail-drawer .el-drawer__body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  padding: 20px;
+}
+
+/* 信任客户 Logo 效果 */
+.trusted-logo {
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.trusted-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* 统一卡片样式 */
+.unified-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.unified-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.1);
+}
+
+/* 解决方案卡片 */
+.solution-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.solution-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2), 0 0 0 1px rgba(59, 130, 246, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Tab 切换样式 */
+.tab-btn {
+  @apply px-6 py-3 rounded-full text-sm font-medium transition-all duration-300;
+  @apply bg-slate-800/50 text-slate-400 border border-slate-700/50;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #3B82F6, #60A5FA);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+/* 统一按钮样式 - 蓝紫渐变 */
+.btn-primary {
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+/* 径向渐变背景支持 */
+.bg-gradient-radial {
+  background: radial-gradient(circle at center, var(--tw-gradient-stops));
+}
+
+/* ========== Element Plus 主按钮样式统一覆盖 ========== */
+
+/* 覆盖 Element Plus 主色 */
+:root {
+  --el-color-primary: #4F6EF7;
+  --el-color-primary-light-3: #7B93F9;
+  --el-color-primary-light-5: #A7B6FB;
+  --el-color-primary-light-7: #D3DAFD;
+  --el-color-primary-light-8: #E9ECFE;
+  --el-color-primary-light-9: #F4F6FF;
+  --el-color-primary-dark-2: #3B5DE7;
+}
+
+/* 主按钮渐变覆盖 */
+.el-button--primary {
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6) !important;
+  border: none !important;
+  color: #fff !important;
+  transition: all 0.3s ease !important;
+}
+
+.el-button--primary:hover,
+.el-button--primary:focus {
+  background: linear-gradient(135deg, #4B8DF7, #9B6DF7) !important;
+  border: none !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+}
+
+.el-button--primary:active {
+  background: linear-gradient(135deg, #2563EB, #7C3AED) !important;
+  border: none !important;
+  transform: translateY(0);
+}
+
+/* 确保首页 CTA 按钮也使用相同渐变 */
+a.el-button--primary,
+button.el-button--primary {
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6) !important;
+  border: none !important;
+}
+
+/* text 类型按钮样式 */
+.el-button--text {
+  color: #94a3b8 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.el-button--text:hover,
+.el-button--text:focus {
+  color: #cbd5e1 !important;
+  background: transparent !important;
+  border: none !important;
+}
+.el-overlay {
+  height: 100vh !important;
+  align-items: flex-start !important;
+  padding-top: 5vh !important;
+}

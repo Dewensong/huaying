@@ -233,7 +233,7 @@ async function callVolcanoTTS(
 
     // 请求体：speaker 直接用原始 S_ 开头的音色 ID
     const requestBody = {
-      user: { uid: `zhibofang_${Date.now()}` },
+      user: { uid: `huaying_${Date.now()}` },
       req_params: {
         text: text,
         speaker: voiceType,  // 直接用原始音色 ID，如 S_D9wczJt22
@@ -352,7 +352,7 @@ async function callVolcanoTTS(
 
   // 【优化】Payload 结构 - 使用默认语速 1.0
   const requestBody = {
-    user: { uid: `zhibofang_${Date.now()}` },
+    user: { uid: `huaying_${Date.now()}` },
     req_params: {
       text: text,
       speaker: voiceType,
@@ -558,7 +558,7 @@ async function callVoiceCloneTTS(
   const accessKey = apiKey.endsWith('-ALL2UzND') ? apiKey : apiKey + '-ALL2UzND'
 
   const requestBody = {
-    user: { uid: `zhibofang_${Date.now()}` },
+    user: { uid: `huaying_${Date.now()}` },
     req_params: {
       text: text,
       speaker: speakerId,  // 直接使用 speaker_id

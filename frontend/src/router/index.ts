@@ -128,9 +128,9 @@ router.beforeEach(async (to, _from, next) => {
 router.afterEach((to) => {
   const title = to.meta.title as string | undefined
   if (title) {
-    document.title = `${title} - 智播坊`
+    document.title = `${title} - 话映`
   } else {
-    document.title = '智播坊'
+    document.title = '话映'
   }
 })
 

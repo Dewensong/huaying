@@ -3,7 +3,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const dbPath = path.join(__dirname, '../../data/zhibofang.db')
+const dbPath = path.join(__dirname, '../../data/huaying.db')
 
 // 确保目录存在
 import fs from 'fs'

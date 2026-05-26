@@ -55,7 +55,7 @@ function toggleVideo() {
       </h1>
       
       <p class="text-lg sm:text-xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-        智播坊是新一代智能数字人视频生成平台，帮助您快速创建高质量的虚拟主播内容，
+        话映是新一代智能数字人视频生成平台，帮助您快速创建高质量的虚拟主播内容，
         <span class="text-[#3B82F6] font-medium">适用于电商直播、知识分享、品牌宣传</span>等多种场景。
       </p>
       

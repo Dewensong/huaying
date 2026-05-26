@@ -15,7 +15,7 @@ const trustedClients = [
       <div class="text-center mb-16 scroll-animate">
         <span class="inline-block px-4 py-1.5 bg-emerald-500/10 text-emerald-400 rounded-full text-sm mb-6">客户案例</span>
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">已服务客户</h2>
-        <p class="text-slate-400">来自各行业的领先企业正在使用智播坊</p>
+        <p class="text-slate-400">来自各行业的领先企业正在使用话映</p>
       </div>
 
       <!-- Logo 墙 -->
@@ -39,7 +39,7 @@ const trustedClients = [
               <div class="text-sm text-slate-400">电商运营总监</div>
             </div>
           </div>
-          <p class="text-slate-300">"使用智播坊后，我们的直播预录制效率提升了 <span class="text-[#3B82F6] font-semibold">300%</span>，内容产出更加稳定高效。"</p>
+          <p class="text-slate-300">"使用话映后，我们的直播预录制效率提升了 <span class="text-[#3B82F6] font-semibold">300%</span>，内容产出更加稳定高效。"</p>
         </div>
         <div class="unified-card p-6">
           <div class="flex items-center gap-3 mb-4">

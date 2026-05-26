@@ -106,7 +106,7 @@ server.listen(config.port, async () => {
   console.log(`
 ╔═══════════════════════════════════════════════════════════╗
 ║                                                           ║
-║   🎬 智播坊 - 数字人生产工厂                               ║
+║   🎬 话映 - 数字人生产工厂                               ║
 ║                                                           ║
 ║   服务已启动                                               ║
 ║   • API:      http://localhost:${config.port}                       ║

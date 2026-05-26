@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'zhibofang',
+    name: 'huaying',
     script: './src/app.ts',
     interpreter: 'node',
     interpreter_args: '-r ts-node/register',

@@ -434,7 +434,7 @@ router.delete('/clone/:speakerId', authenticate, (req: AuthRequest, res: Respons
 // ============ 声音试听接口 ============
 
 // 试听文本
-const PREVIEW_TEXT = '欢迎使用智播坊数字人配音系统。我是你的专属虚拟主播，拥有清晰流畅的语音合成能力，可以为你录制专业级口播视频，让内容创作更高效、更生动。'
+const PREVIEW_TEXT = '欢迎使用话映数字人配音系统。我是你的专属虚拟主播，拥有清晰流畅的语音合成能力，可以为你录制专业级口播视频，让内容创作更高效、更生动。'
 
 /**
  * POST /api/core/voices/preview

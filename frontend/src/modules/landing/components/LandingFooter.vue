@@ -19,7 +19,7 @@ function scrollTo(id: string) {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
               </svg>
             </div>
-            <span class="text-lg font-bold text-white">智播坊</span>
+            <span class="text-lg font-bold text-white">话映</span>
           </router-link>
           <p class="text-slate-400 text-sm mb-4">新一代 AI 数字人视频创作平台</p>
           <!-- 联系我们 -->
@@ -51,7 +51,7 @@ function scrollTo(id: string) {
       <!-- 底部 -->
       <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
         <div class="text-slate-400 text-sm">
-          © 2026 智播坊. 保留所有权利.
+          © 2026 话映. 保留所有权利.
         </div>
         <div class="text-slate-500 text-xs">
           备案号：京ICP备2026016299号-1

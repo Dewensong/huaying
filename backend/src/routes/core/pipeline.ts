@@ -89,7 +89,7 @@ async function mockUploadToCOS(filePath: string): Promise<{ url: string }> {
   
   // 返回本地文件路径作为 mock URL
   const fileName = path.basename(filePath)
-  const mockUrl = `https://mock-cos.zhibofang.com/videos/${fileName}`
+  const mockUrl = `https://mock-cos.huaying.com/videos/${fileName}`
   
   return { url: mockUrl }
 }

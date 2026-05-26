@@ -79,7 +79,7 @@ onMounted(() => {
             <VideoCamera class="w-5 h-5 text-white" />
           </div>
           <span v-if="!sidebarCollapsed" class="text-lg font-bold gradient-text whitespace-nowrap">
-            智播坊
+            话映
           </span>
         </div>
       </div>
@@ -140,7 +140,7 @@ onMounted(() => {
         <div class="w-7 h-7 rounded-lg bg-gradient-primary flex items-center justify-center">
           <VideoCamera class="w-4 h-4 text-white" />
         </div>
-        <span class="text-lg font-bold gradient-text">智播坊</span>
+        <span class="text-lg font-bold gradient-text">话映</span>
       </div>
 
       <el-button

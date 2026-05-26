@@ -4,11 +4,11 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #3B82F6;
-  --color-accent: #8B5CF6;
-  --color-cyan: #06B6D4;
-  --color-purple: #8B5CF6;
-  --color-pink: #EC4899;
+  --color-primary: #14B8A6;
+  --color-accent: #F59E0B;
+  --color-teal: #14B8A6;
+  --color-amber: #F59E0B;
+  --color-coral: #F472B6;
 }
 
 * {
@@ -58,25 +58,25 @@ html, body {
   border-radius: 16px;
 }
 
-/* 渐变文字 */
+/* 渐变文字 — 话映专属青金 gradient */
 .gradient-text {
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
+  background: linear-gradient(135deg, #14B8A6, #0D9488, #F59E0B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* 蓝紫渐变文字 */
-.blue-purple-text {
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+/* 青金渐变文字 */
+.teal-amber-text {
+  background: linear-gradient(135deg, #14B8A6, #F59E0B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* 紫红渐变文字 */
-.purple-pink-text {
-  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+/* 金粉渐变文字 */
+.amber-coral-text {
+  background: linear-gradient(135deg, #F59E0B, #F472B6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -94,19 +94,19 @@ html, body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(20, 184, 166, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(20, 184, 166, 0.6); }
 }
 
-/* 蓝紫渐变呼吸效果 */
-@keyframes blue-purple-breathe {
-  0%, 100% { 
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3),
-                0 0 40px rgba(139, 92, 246, 0.1);
+/* 青金渐变呼吸效果 */
+@keyframes teal-amber-breathe {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.3),
+                0 0 40px rgba(245, 158, 11, 0.1);
   }
-  50% { 
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.5),
-                0 0 80px rgba(139, 92, 246, 0.3);
+  50% {
+    box-shadow: 0 0 40px rgba(20, 184, 166, 0.5),
+                0 0 80px rgba(245, 158, 11, 0.3);
   }
 }
 
@@ -149,8 +149,8 @@ html, body {
 
 /* 进度数字脉冲动画 */
 @keyframes number-pulse {
-  0%, 100% { transform: scale(1); text-shadow: 0 0 10px rgba(59, 130, 246, 0.3); }
-  50% { transform: scale(1.05); text-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+  0%, 100% { transform: scale(1); text-shadow: 0 0 10px rgba(20, 184, 166, 0.3); }
+  50% { transform: scale(1.05); text-shadow: 0 0 20px rgba(20, 184, 166, 0.6); }
 }
 
 .animate-number-pulse {
@@ -179,8 +179,8 @@ html, body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.animate-blue-purple-breathe {
-  animation: blue-purple-breathe 3s ease-in-out infinite;
+.animate-teal-amber-breathe {
+  animation: teal-amber-breathe 3s ease-in-out infinite;
 }
 
 .animate-gradient {
@@ -216,17 +216,17 @@ html, body {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.8) 0%, transparent 70%);
   border-radius: 50%;
   animation: particle 15s linear infinite;
 }
 
 /* Element Plus 深色主题覆盖 */
 .el-button--primary {
-  --el-button-bg-color: #3B82F6;
-  --el-button-border-color: #3B82F6;
-  --el-button-hover-bg-color: #2563EB;
-  --el-button-hover-border-color: #2563EB;
+  --el-button-bg-color: #14B8A6;
+  --el-button-border-color: #14B8A6;
+  --el-button-hover-bg-color: #0D9488;
+  --el-button-hover-border-color: #0D9488;
 }
 
 .el-input__wrapper {
@@ -268,8 +268,8 @@ html, body {
 
 .unified-card:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.1);
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow: 0 8px 32px rgba(20, 184, 166, 0.15), 0 0 0 1px rgba(20, 184, 166, 0.1);
 }
 
 /* 解决方案卡片 */
@@ -282,8 +282,8 @@ html, body {
 
 .solution-card:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(59, 130, 246, 0.5);
-  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2), 0 0 0 1px rgba(59, 130, 246, 0.15);
+  border-color: rgba(20, 184, 166, 0.5);
+  box-shadow: 0 8px 32px rgba(20, 184, 166, 0.2), 0 0 0 1px rgba(20, 184, 166, 0.15);
   transform: translateY(-4px);
 }
 
@@ -294,27 +294,27 @@ html, body {
 }
 
 .tab-btn.active {
-  background: linear-gradient(135deg, #3B82F6, #60A5FA);
+  background: linear-gradient(135deg, #14B8A6, #2DD4BF);
   color: white;
   border-color: transparent;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
 }
 
-/* 统一按钮样式 - 蓝紫渐变 */
+/* 统一按钮样式 - 青金 gradient */
 .btn-primary {
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  background: linear-gradient(135deg, #14B8A6, #F59E0B);
   color: white;
   border: none;
   border-radius: 12px;
   padding: 12px 24px;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 25px rgba(20, 184, 166, 0.4);
 }
 
 /* 径向渐变背景支持 */
@@ -326,18 +326,18 @@ html, body {
 
 /* 覆盖 Element Plus 主色 */
 :root {
-  --el-color-primary: #4F6EF7;
-  --el-color-primary-light-3: #7B93F9;
-  --el-color-primary-light-5: #A7B6FB;
-  --el-color-primary-light-7: #D3DAFD;
-  --el-color-primary-light-8: #E9ECFE;
-  --el-color-primary-light-9: #F4F6FF;
-  --el-color-primary-dark-2: #3B5DE7;
+  --el-color-primary: #14B8A6;
+  --el-color-primary-light-3: #5EEAD4;
+  --el-color-primary-light-5: #99F6E4;
+  --el-color-primary-light-7: #CCFBF1;
+  --el-color-primary-light-8: #E6FFF8;
+  --el-color-primary-light-9: #F0FDFA;
+  --el-color-primary-dark-2: #0D9488;
 }
 
 /* 主按钮渐变覆盖 */
 .el-button--primary {
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6) !important;
+  background: linear-gradient(135deg, #14B8A6, #0D9488) !important;
   border: none !important;
   color: #fff !important;
   transition: all 0.3s ease !important;
@@ -345,15 +345,15 @@ html, body {
 
 .el-button--primary:hover,
 .el-button--primary:focus {
-  background: linear-gradient(135deg, #4B8DF7, #9B6DF7) !important;
+  background: linear-gradient(135deg, #2DD4BF, #F59E0B) !important;
   border: none !important;
   color: #fff !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 14px rgba(20, 184, 166, 0.4);
 }
 
 .el-button--primary:active {
-  background: linear-gradient(135deg, #2563EB, #7C3AED) !important;
+  background: linear-gradient(135deg, #0D9488, #D97706) !important;
   border: none !important;
   transform: translateY(0);
 }
@@ -361,7 +361,7 @@ html, body {
 /* 确保首页 CTA 按钮也使用相同渐变 */
 a.el-button--primary,
 button.el-button--primary {
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6) !important;
+  background: linear-gradient(135deg, #14B8A6, #0D9488) !important;
   border: none !important;
 }
 

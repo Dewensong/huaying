@@ -59,11 +59,11 @@ onMounted(() => {
 
 <template>
   <section class="stats-section py-16 relative">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#3B82F6]/5 via-transparent to-[#8B5CF6]/5"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#14B8A6]/5 via-transparent to-[#F59E0B]/5"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         <div v-for="stat in stats" :key="stat.label" class="text-center scroll-animate">
-          <div class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] bg-clip-text text-transparent mb-2">{{ stat.display }}</div>
+          <div class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#14B8A6] to-[#F59E0B] bg-clip-text text-transparent mb-2">{{ stat.display }}</div>
           <div class="text-sm text-slate-400">{{ stat.label }}</div>
         </div>
       </div>

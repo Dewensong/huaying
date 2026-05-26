@@ -40,7 +40,7 @@ const { isMobile, isTablet } = useResponsive()
 
 const columns = [
   { key: 'pending', label: '排队中', color: '#F59E0B' },
-  { key: 'processing', label: '生成中', color: '#3B82F6' },
+  { key: 'processing', label: '生成中', color: '#14B8A6' },
   { key: 'completed', label: '已完成', color: '#10B981' },
   { key: 'failed', label: '失败', color: '#EF4444' }
 ]

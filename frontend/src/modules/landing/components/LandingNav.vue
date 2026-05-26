@@ -26,12 +26,12 @@ function goToRegister() {
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
         <router-link to="/" class="flex items-center gap-2">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] flex items-center justify-center shadow-lg shadow-primary-500/30">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#14B8A6] to-[#F59E0B] flex items-center justify-center shadow-lg shadow-primary-500/30">
             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
             </svg>
           </div>
-          <span class="text-xl font-bold bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] bg-clip-text text-transparent">话映</span>
+          <span class="text-xl font-bold bg-gradient-to-r from-[#14B8A6] to-[#F59E0B] bg-clip-text text-transparent">话映</span>
         </router-link>
 
         <div class="hidden lg:flex items-center gap-1">

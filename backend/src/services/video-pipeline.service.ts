@@ -61,7 +61,6 @@ export interface VideoPipelineParams {
   backgroundValue?: string
   subtitleFontSize?: number
   subtitleFontColor?: string
-  mode?: string
 }
 
 export interface VideoPipelineResult {
@@ -1525,24 +1524,8 @@ async function processQueue() {
         thumbnail: result.thumbnail,
         duration: result.duration
       })
-      // 调用 Webhook
-      if (task.webhookUrl) {
-        import('../routes/v1/index.js').then(module => {
-          module.callWebhook(task.videoId, task.webhookUrl!)
-        }).catch(err => {
-          console.error('[Pipeline] Webhook 导入失败:', err)
-        })
-      }
     } else {
       updateVideoRecord(task.videoId, { status: 'failed', error: result.error })
-      // 失败时也调用 Webhook
-      if (task.webhookUrl) {
-        import('../routes/v1/index.js').then(module => {
-          module.callWebhook(task.videoId, task.webhookUrl!)
-        }).catch(err => {
-          console.error('[Pipeline] Webhook 导入失败:', err)
-        })
-      }
     }
   } catch (error: any) {
     updateVideoRecord(task.videoId, { status: 'failed', error: error.message })

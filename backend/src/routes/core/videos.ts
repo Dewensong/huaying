@@ -22,7 +22,7 @@ const router = Router()
  * - background: 背景配置 { type: 'color'|'image', value: string }
  * - subtitleConfig: 字幕配置 { fontSize: number, fontColor: string }
  */
-router.post('/create', authenticate, checkQuota(1), async (req: AuthRequest, res: Response) => {
+router.post('/create', authenticate, async (req: AuthRequest, res: Response) => {
   const {
     avatarId,
     script,
@@ -30,8 +30,7 @@ router.post('/create', authenticate, checkQuota(1), async (req: AuthRequest, res
     voiceId,
     voiceType,
     background,
-    subtitleConfig,
-    mode = 'static'  // 视频生成模式：static=静态合成, digital_human=数字人口播
+    subtitleConfig
   } = req.body
 
   // 参数校验
@@ -40,11 +39,6 @@ router.post('/create', authenticate, checkQuota(1), async (req: AuthRequest, res
   }
   if (!script || script.trim() === '') {
     return res.status(400).json({ success: false, message: '文案内容不能为空' })
-  }
-
-  // 校验 mode 参数
-  if (mode && !['static', 'digital_human'].includes(mode)) {
-    return res.status(400).json({ success: false, message: '无效的 mode 参数，支持: static, digital_human' })
   }
 
   try {
@@ -58,7 +52,7 @@ router.post('/create', authenticate, checkQuota(1), async (req: AuthRequest, res
       }
     }
 
-    console.log(`[Video/Create] mode=${mode}, voiceId=${voiceId}, voiceType=${finalVoiceType}`)
+    console.log(`[Video/Create] voiceId=${voiceId}, voiceType=${finalVoiceType}`)
     console.log(`[Video/Create] 背景配置:`, background)
     console.log(`[Video/Create] 字幕配置:`, subtitleConfig)
 
@@ -70,11 +64,10 @@ router.post('/create', authenticate, checkQuota(1), async (req: AuthRequest, res
       avatarId,
       voiceId: voiceId || undefined,
       background: background || '',
-      status: 'processing',
-      mode
+      status: 'processing'
     })
 
-    console.log(`[Video/Create] 创建视频任务: videoId=${videoId}, mode=${mode}`)
+    console.log(`[Video/Create] 创建视频任务: videoId=${videoId}`)
 
     // 异步执行视频合成（后台处理），传递所有配置
     processVideoAsync(videoId, {
@@ -86,31 +79,20 @@ router.post('/create', authenticate, checkQuota(1), async (req: AuthRequest, res
       backgroundType: background?.type,
       backgroundValue: background?.value,
       subtitleFontSize: subtitleConfig?.fontSize,
-      subtitleFontColor: subtitleConfig?.fontColor,
-      mode
+      subtitleFontColor: subtitleConfig?.fontColor
     })
 
     // 立即返回（不等待合成完成）
     res.json({
       success: true,
-      message: mode === 'digital_human' ? '数字人口播视频任务已提交' : '视频生成任务已提交',
+      message: '视频生成任务已提交',
       videoId,
-      status: 'processing',
-      mode
+      status: 'processing'
     })
 
   } catch (error: any) {
     console.error('[Video/Create] 创建失败:', error)
-    
-    // 如果是数字人模式未配置的错误，返回明确提示
-    if (error.message.includes('未配置') && error.message.includes('数字人')) {
-      return res.status(503).json({
-        success: false,
-        message: '动态数字人服务未配置，请联系管理员',
-        error: error.message
-      })
-    }
-    
+
     res.status(500).json({
       success: false,
       message: error.message || '创建视频失败'
@@ -194,8 +176,6 @@ router.get('/', authenticate, (req: AuthRequest, res: Response) => {
       completedAt: item.completed_at,
       avatarId: item.avatar_id,
       voiceId: item.voice_id,
-      mode: item.mode || 'static',
-      video_source: item.video_source || 'static',
       background,
       video_url: videoUrl, // 添加完整的 video_url
       subtitleUrl, // 添加 subtitle_url
@@ -203,17 +183,15 @@ router.get('/', authenticate, (req: AuthRequest, res: Response) => {
     }
   })
 
-  res.json({ 
-    list: formattedList, 
-    total: total.count, 
-    statusCounts,
-    userPlan: req.user!.plan,
-    userCredits: req.user!.credits
+  res.json({
+    list: formattedList,
+    total: total.count,
+    statusCounts
   })
 })
 
 // 创建视频任务
-router.post('/', authenticate, checkQuota(1), (req: AuthRequest, res: Response) => {
+router.post('/', authenticate, (req: AuthRequest, res: Response) => {
   const { title, script, avatarId, voiceId, background, subtitleConfig } = req.body
 
   if (!script) {
@@ -234,7 +212,6 @@ router.post('/', authenticate, checkQuota(1), (req: AuthRequest, res: Response) 
   )
 
   const videoId = result.lastInsertRowid as number
-  consumeQuota(req.user!.id, 1, '创建视频', videoId)
 
   // 模拟视频生成处理
   simulateVideoProcessing(videoId)
@@ -244,7 +221,7 @@ router.post('/', authenticate, checkQuota(1), (req: AuthRequest, res: Response) 
 })
 
 // 批量创建视频
-router.post('/batch', authenticate, checkQuota(100), async (req: AuthRequest, res: Response) => {
+router.post('/batch', authenticate, async (req: AuthRequest, res: Response) => {
   const videos = req.body
 
   if (!Array.isArray(videos) || videos.length === 0) {
@@ -255,21 +232,15 @@ router.post('/batch', authenticate, checkQuota(100), async (req: AuthRequest, re
     return res.status(400).json({ message: '单次最多创建 100 个视频' })
   }
 
-  // 检查额度
-  if (req.user!.plan !== 'enterprise' && req.user!.credits < videos.length) {
-    return res.status(402).json({ message: '额度不足', credits: req.user!.credits, required: videos.length })
-  }
-
   const insertStmt = db.prepare(`
-    INSERT INTO videos (user_id, title, script, avatar_id, voice_id, background, subtitle_config, status, mode, video_source)
-    VALUES (?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?)
+    INSERT INTO videos (user_id, title, script, avatar_id, voice_id, background, subtitle_config, status)
+    VALUES (?, ?, ?, ?, ?, ?, ?, 'pending')
   `)
 
   const videoIds: number[] = []
 
   const transaction = db.transaction(() => {
     for (const video of videos) {
-      const mode = video.mode || 'static'
       const result = insertStmt.run(
         req.user!.id,
         video.title || '',
@@ -277,18 +248,13 @@ router.post('/batch', authenticate, checkQuota(100), async (req: AuthRequest, re
         video.avatarId || null,
         video.voiceId || null,
         video.background || '',
-        JSON.stringify(video.subtitleConfig || {}),
-        mode,
-        mode === 'digital_human' ? 'digital_human' : 'static'
+        JSON.stringify(video.subtitleConfig || {})
       )
       videoIds.push(result.lastInsertRowid as number)
     }
   })
 
   transaction()
-
-  // 扣除额度
-  consumeQuota(req.user!.id, videos.length, '批量创建视频')
 
   // 异步执行真正的视频生成流水线
   videoIds.forEach((id, index) => {
@@ -311,8 +277,7 @@ router.post('/batch', authenticate, checkQuota(100), async (req: AuthRequest, re
           avatarId: video.avatar_id,
           script: video.script,
           backgroundType: bgType,
-          backgroundValue: bgValue,
-          mode: video.mode || 'static'
+          backgroundValue: bgValue
         })
       }
     }, index * 1000) // 每隔 1 秒处理一个，避开并发 TTS 调用
@@ -371,9 +336,6 @@ router.get('/:id', authenticate, (req: AuthRequest, res: Response) => {
     id: video.id,
     title: video.title,
     script: video.script,
-    // 模式
-    mode: video.mode || 'static',
-    video_source: video.video_source || 'static',
     // 形象和声音
     avatar_id: video.avatar_id,
     avatarId: video.avatar_id,
@@ -396,11 +358,6 @@ router.get('/:id', authenticate, (req: AuthRequest, res: Response) => {
     // 字幕
     subtitle_url: video.subtitle_url || '',
     subtitleUrl: video.subtitle_url || '',
-    // 数字人任务ID
-    digital_human_task_id: video.digital_human_task_id || null,
-    // 用户套餐信息
-    userPlan: req.user!.plan,
-    userCredits: req.user!.credits
   })
 })
 
@@ -451,10 +408,6 @@ router.post('/:id/retry', authenticate, (req: AuthRequest, res: Response) => {
     return res.status(400).json({ message: '只能重试失败的任务' })
   }
 
-  // 获取视频创建时的 mode（static 或 digital_human）
-  const mode = video.mode || 'static'
-  console.log(`[Video/Retry] videoId=${id}, mode=${mode}`)
-
   db.prepare(`
     UPDATE videos SET status = 'pending', progress = 0, error = NULL WHERE id = ?
   `).run(id)
@@ -478,7 +431,6 @@ router.post('/:id/retry', authenticate, (req: AuthRequest, res: Response) => {
     if (video.subtitle_config) subtitleConfig = JSON.parse(video.subtitle_config)
   } catch {}
 
-  // 传递完整的参数，包括 mode
   processVideoAsync(Number(id), {
     userId: req.user!.id,
     avatarId: video.avatar_id,
@@ -486,11 +438,10 @@ router.post('/:id/retry', authenticate, (req: AuthRequest, res: Response) => {
     backgroundType: bgType,
     backgroundValue: bgValue,
     subtitleFontSize: subtitleConfig?.fontSize,
-    subtitleFontColor: subtitleConfig?.fontColor,
-    mode: mode as 'static' | 'digital_human'
+    subtitleFontColor: subtitleConfig?.fontColor
   })
 
-  res.json({ message: '已重新提交', mode })
+  res.json({ message: '已重新提交' })
 })
 
 // 删除视频

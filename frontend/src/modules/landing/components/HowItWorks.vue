@@ -11,7 +11,7 @@ const workflow = [
   <section id="workflow" class="py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 scroll-animate">
-        <span class="inline-block px-4 py-1.5 bg-[#3B82F6]/10 text-[#3B82F6] rounded-full text-sm mb-6">使用流程</span>
+        <span class="inline-block px-4 py-1.5 bg-[#14B8A6]/10 text-[#14B8A6] rounded-full text-sm mb-6">使用流程</span>
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">四步创建数字人视频</h2>
         <p class="text-slate-400">无需专业技能，轻松创建专业级数字人视频</p>
       </div>
@@ -24,7 +24,7 @@ const workflow = [
           :style="{ animationDelay: `${index * 0.15}s` }"
         >
           <div class="unified-card p-6 text-center h-full">
-            <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] flex items-center justify-center text-white font-bold text-lg hover:shadow-lg hover:shadow-primary-500/30 transition-all">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#14B8A6] to-[#F59E0B] flex items-center justify-center text-white font-bold text-lg hover:shadow-lg hover:shadow-primary-500/30 transition-all">
               {{ item.step }}
             </div>
             <h3 class="text-lg font-semibold text-white mb-2">{{ item.title }}</h3>
@@ -32,7 +32,7 @@ const workflow = [
           </div>
           <!-- 连接线 -->
           <div v-if="index < workflow.length - 1" class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-            <div class="w-6 h-0.5 bg-gradient-to-r from-[#3B82F6] to-transparent"></div>
+            <div class="w-6 h-0.5 bg-gradient-to-r from-[#14B8A6] to-transparent"></div>
           </div>
         </div>
       </div>

@@ -10,7 +10,6 @@ declare module 'vue' {
     AppLayout: typeof import('./components/AppLayout.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
-    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElForm: typeof import('element-plus/es')['ElForm']

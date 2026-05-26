@@ -58,7 +58,7 @@ const currentVideo = computed(() => videoDetail.value || props.video)
 // 视频状态配置
 const statusConfig = {
   pending: { label: '排队中', color: '#F59E0B' },
-  processing: { label: '生成中', color: '#3B82F6' },
+  processing: { label: '生成中', color: '#14B8A6' },
   completed: { label: '已完成', color: '#10B981' },
   failed: { label: '失败', color: '#EF4444' }
 }

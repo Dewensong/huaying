@@ -76,7 +76,7 @@ function handleVoiceSelect(voice: any) {
               @click="handleAvatarSelect(avatar)"
               :class="[
                 'cursor-pointer rounded-lg transition-all duration-200',
-                avatarId === avatar.id ? 'ring-2 ring-[#3B82F6] ring-offset-2 ring-offset-slate-900' : 'hover:ring-2 hover:ring-blue-500/50 hover:ring-offset-2 hover:ring-offset-slate-900'
+                avatarId === avatar.id ? 'ring-2 ring-[#14B8A6] ring-offset-2 ring-offset-slate-900' : 'hover:ring-2 hover:ring-blue-500/50 hover:ring-offset-2 hover:ring-offset-slate-900'
               ]"
             >
               <AvatarCard

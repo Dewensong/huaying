@@ -36,7 +36,7 @@ function toggleFaq(index: number) {
   <section id="faq" class="py-24">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 scroll-animate">
-        <span class="inline-block px-4 py-1.5 bg-[#3B82F6]/10 text-[#3B82F6] rounded-full text-sm mb-6">常见问题</span>
+        <span class="inline-block px-4 py-1.5 bg-[#14B8A6]/10 text-[#14B8A6] rounded-full text-sm mb-6">常见问题</span>
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">常见问题</h2>
         <p class="text-slate-400">有其他问题？随时联系我们的客服团队</p>
       </div>

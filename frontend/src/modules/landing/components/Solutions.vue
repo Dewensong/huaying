@@ -31,7 +31,7 @@ const solutions = [
   <section id="solutions" class="py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 scroll-animate">
-        <span class="inline-block px-4 py-1.5 bg-[#8B5CF6]/10 text-[#8B5CF6] rounded-full text-sm mb-6">解决方案</span>
+        <span class="inline-block px-4 py-1.5 bg-[#F59E0B]/10 text-[#F59E0B] rounded-full text-sm mb-6">解决方案</span>
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">行业场景解决方案</h2>
         <p class="text-slate-400 max-w-2xl mx-auto">针对不同行业痛点，提供专属数字人视频解决方案</p>
       </div>
@@ -50,8 +50,8 @@ const solutions = [
           
           <!-- 卡片头部 -->
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#3B82F6]/20 to-[#8B5CF6]/20 flex items-center justify-center border border-[#3B82F6]/30">
-              <el-icon class="text-xl text-[#3B82F6]"><component :is="sol.icon" /></el-icon>
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#14B8A6]/20 to-[#F59E0B]/20 flex items-center justify-center border border-[#14B8A6]/30">
+              <el-icon class="text-xl text-[#14B8A6]"><component :is="sol.icon" /></el-icon>
             </div>
             <h3 class="text-lg font-semibold text-white">{{ sol.label }}</h3>
           </div>
@@ -62,15 +62,15 @@ const solutions = [
           <!-- 卖点列表 -->
           <ul class="space-y-2.5 mb-6">
             <li v-for="benefit in sol.benefits" :key="benefit" class="flex items-center gap-2.5 text-slate-300 text-sm">
-              <span class="w-5 h-5 rounded-full bg-[#3B82F6]/20 flex items-center justify-center flex-shrink-0">
-                <Check class="w-3 h-3" style="color: #3B82F6" />
+              <span class="w-5 h-5 rounded-full bg-[#14B8A6]/20 flex items-center justify-center flex-shrink-0">
+                <Check class="w-3 h-3" style="color: #14B8A6" />
               </span>
               {{ benefit }}
             </li>
           </ul>
           
           <div class="flex items-center justify-end">
-            <el-button text type="primary" class="text-[#06B6D4]">
+            <el-button text type="primary" class="text-[#F59E0B]">
               查看详情
               <el-icon class="ml-1"><ArrowRight /></el-icon>
             </el-button>

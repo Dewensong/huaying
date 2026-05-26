@@ -11,10 +11,10 @@ const partners = [
 
 <template>
   <section class="py-24 relative">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#3B82F6]/5 via-transparent to-[#8B5CF6]/5"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#14B8A6]/5 via-transparent to-[#F59E0B]/5"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16 scroll-animate">
-        <span class="inline-block px-4 py-1.5 bg-[#06B6D4]/10 text-[#06B6D4] rounded-full text-sm mb-6">合作生态</span>
+        <span class="inline-block px-4 py-1.5 bg-[#F59E0B]/10 text-[#F59E0B] rounded-full text-sm mb-6">合作生态</span>
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">强大技术合作伙伴</h2>
         <p class="text-slate-400 max-w-2xl mx-auto">我们与行业领先技术提供商合作，确保最佳性能和稳定性</p>
       </div>
@@ -23,7 +23,7 @@ const partners = [
         <div 
           v-for="partner in partners" 
           :key="partner.name"
-          class="unified-card p-6 flex items-center justify-center min-h-[100px] group cursor-pointer hover:border-[#3B82F6]/50"
+          class="unified-card p-6 flex items-center justify-center min-h-[100px] group cursor-pointer hover:border-[#14B8A6]/50"
         >
           <span class="text-lg font-bold text-slate-500 group-hover:text-white group-hover:bg-gradient-to-r group-hover:bg-clip-text transition-all duration-300" :class="`group-hover:from-[${partner.color.split(' ')[0].replace('from-', '')}] group-hover:to-[${partner.color.split(' ')[1].replace('to-', '')}]`">
             {{ partner.name }}

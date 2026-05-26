@@ -31,7 +31,7 @@ function toggleVideo() {
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- 左侧真实案例视频展示 -->
         <div class="relative scroll-animate">
-          <div class="relative p-1 bg-gradient-to-r from-[#3B82F6]/40 to-[#8B5CF6]/40 rounded-3xl animate-blue-purple-breathe">
+          <div class="relative p-1 bg-gradient-to-r from-[#14B8A6]/40 to-[#F59E0B]/40 rounded-3xl animate-teal-amber-breathe">
             <div class="bg-[#0F172A]/95 rounded-3xl p-6 backdrop-blur-xl">
               <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex items-center justify-center relative overflow-hidden border border-white/5">
                 <video 
@@ -61,7 +61,7 @@ function toggleVideo() {
 
         <!-- 右侧文案 -->
         <div class="scroll-animate">
-          <span class="inline-block px-4 py-1.5 bg-[#3B82F6]/10 text-[#3B82F6] rounded-full text-sm mb-6">效果演示</span>
+          <span class="inline-block px-4 py-1.5 bg-[#14B8A6]/10 text-[#14B8A6] rounded-full text-sm mb-6">效果演示</span>
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">所见即所得</h2>
           <p class="text-slate-300 mb-8 leading-relaxed">
             输入文案，选择形象和声音，一键生成专业级口播视频。
@@ -69,20 +69,20 @@ function toggleVideo() {
           </p>
           <ul class="space-y-4 mb-10">
             <li class="flex items-center gap-3 text-slate-300">
-              <span class="w-6 h-6 rounded-full bg-[#3B82F6]/20 flex items-center justify-center flex-shrink-0">
-                <Check class="w-4 h-4 text-[#3B82F6]" />
+              <span class="w-6 h-6 rounded-full bg-[#14B8A6]/20 flex items-center justify-center flex-shrink-0">
+                <Check class="w-4 h-4 text-[#14B8A6]" />
               </span>
               多种形象风格可选，自定义上传形象
             </li>
             <li class="flex items-center gap-3 text-slate-300">
-              <span class="w-6 h-6 rounded-full bg-[#3B82F6]/20 flex items-center justify-center flex-shrink-0">
-                <Check class="w-4 h-4 text-[#3B82F6]" />
+              <span class="w-6 h-6 rounded-full bg-[#14B8A6]/20 flex items-center justify-center flex-shrink-0">
+                <Check class="w-4 h-4 text-[#14B8A6]" />
               </span>
               TTS 语音合成 + 声音克隆，音色统一自然
             </li>
             <li class="flex items-center gap-3 text-slate-300">
-              <span class="w-6 h-6 rounded-full bg-[#3B82F6]/20 flex items-center justify-center flex-shrink-0">
-                <Check class="w-4 h-4 text-[#3B82F6]" />
+              <span class="w-6 h-6 rounded-full bg-[#14B8A6]/20 flex items-center justify-center flex-shrink-0">
+                <Check class="w-4 h-4 text-[#14B8A6]" />
               </span>
               自动字幕生成，开箱即用
             </li>
@@ -99,7 +99,7 @@ function toggleVideo() {
 
 <style scoped>
 /* 动画 */
-@keyframes blue-purple-breathe {
+@keyframes teal-amber-breathe {
   0%, 100% { 
     box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), 0 0 60px rgba(139, 92, 246, 0.1);
   }
@@ -108,8 +108,8 @@ function toggleVideo() {
   }
 }
 
-.animate-blue-purple-breathe {
-  animation: blue-purple-breathe 3s ease-in-out infinite;
+.animate-teal-amber-breathe {
+  animation: teal-amber-breathe 3s ease-in-out infinite;
 }
 
 /* 滚动触发动画 */

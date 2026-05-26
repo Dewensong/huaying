@@ -24,10 +24,10 @@ const technologies = [
 <template>
   <section id="tech" class="py-24 relative">
     <div class="tech-grid"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#8B5CF6]/5 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#F59E0B]/5 to-transparent"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16 scroll-animate">
-        <span class="inline-block px-4 py-1.5 bg-[#8B5CF6]/10 text-[#8B5CF6] rounded-full text-sm mb-6">核心技术</span>
+        <span class="inline-block px-4 py-1.5 bg-[#F59E0B]/10 text-[#F59E0B] rounded-full text-sm mb-6">核心技术</span>
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">自研核心技术，打造专业级数字人视频</h2>
         <p class="text-slate-400 max-w-2xl mx-auto">集成行业顶尖AI能力，从形象生成到口型驱动，全流程智能化</p>
       </div>
@@ -39,12 +39,12 @@ const technologies = [
           class="group unified-card p-8 scroll-animate"
           :style="{ animationDelay: `${index * 0.15}s` }"
         >
-          <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary-500/30 transition-all flex-shrink-0">
+          <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#14B8A6] to-[#F59E0B] flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary-500/30 transition-all flex-shrink-0">
             <span class="text-lg font-bold text-white leading-none tracking-wider">{{ tech.icon.toUpperCase() }}</span>
           </div>
           <div class="flex items-center gap-2 mb-3">
             <h3 class="text-xl font-semibold text-white">{{ tech.title }}</h3>
-            <span class="px-2 py-0.5 bg-[#3B82F6]/10 text-[#3B82F6] text-xs rounded-full">{{ tech.highlight }}</span>
+            <span class="px-2 py-0.5 bg-[#14B8A6]/10 text-[#14B8A6] text-xs rounded-full">{{ tech.highlight }}</span>
           </div>
           <p class="text-slate-400 leading-relaxed">{{ tech.desc }}</p>
         </div>

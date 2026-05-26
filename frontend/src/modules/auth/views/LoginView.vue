@@ -108,7 +108,7 @@ async function handleLogin() {
             </svg>
           </div>
           <h1 class="text-3xl font-bold gradient-text">话映</h1>
-          <p class="text-slate-400 mt-2">数字人生产工厂</p>
+          <p class="text-slate-400 mt-2">AI 口播视频自动生成平台</p>
         </router-link>
       </div>
 

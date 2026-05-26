@@ -26,7 +26,7 @@ const emit = defineEmits<{
 
 const statusConfig = {
   pending: { label: '排队中', color: '#F59E0B', icon: 'clock' },
-  processing: { label: '生成中', color: '#3B82F6', icon: 'spinner' },
+  processing: { label: '生成中', color: '#14B8A6', icon: 'spinner' },
   completed: { label: '已完成', color: '#10B981', icon: 'check' },
   failed: { label: '失败', color: '#EF4444', icon: 'x' }
 }

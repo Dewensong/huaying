@@ -37,7 +37,7 @@ const features = [
   <section id="features" class="py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 scroll-animate">
-        <span class="inline-block px-4 py-1.5 bg-[#3B82F6]/10 text-[#3B82F6] rounded-full text-sm mb-6">核心功能</span>
+        <span class="inline-block px-4 py-1.5 bg-[#14B8A6]/10 text-[#14B8A6] rounded-full text-sm mb-6">核心功能</span>
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">强大功能，简单易用</h2>
         <p class="text-slate-400 max-w-2xl mx-auto">一站式数字人视频创作解决方案，从形象到内容，全流程智能化</p>
       </div>
@@ -49,8 +49,8 @@ const features = [
           class="unified-card p-6 scroll-animate hover:-translate-y-1"
           :style="{ animationDelay: `${index * 0.08}s` }"
         >
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#3B82F6]/10 to-[#8B5CF6]/10 flex items-center justify-center mb-5 border border-[#3B82F6]/20">
-            <svg class="w-7 h-7 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#14B8A6]/10 to-[#F59E0B]/10 flex items-center justify-center mb-5 border border-[#14B8A6]/20">
+            <svg class="w-7 h-7 text-[#14B8A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="feature.svgIcon" />
             </svg>
           </div>

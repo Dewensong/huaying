@@ -33,17 +33,17 @@ const trustedClients = [
       <div class="grid md:grid-cols-3 gap-6 scroll-animate">
         <div class="unified-card p-6">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] flex items-center justify-center text-xl">👩‍💼</div>
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#14B8A6] to-[#F59E0B] flex items-center justify-center text-xl">👩‍💼</div>
             <div>
               <div class="font-semibold text-white">李女士</div>
               <div class="text-sm text-slate-400">电商运营总监</div>
             </div>
           </div>
-          <p class="text-slate-300">"使用话映后，我们的直播预录制效率提升了 <span class="text-[#3B82F6] font-semibold">300%</span>，内容产出更加稳定高效。"</p>
+          <p class="text-slate-300">"使用话映后，我们的直播预录制效率提升了 <span class="text-[#14B8A6] font-semibold">300%</span>，内容产出更加稳定高效。"</p>
         </div>
         <div class="unified-card p-6">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] flex items-center justify-center text-xl">👨‍💻</div>
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#14B8A6] to-[#F59E0B] flex items-center justify-center text-xl">👨‍💻</div>
             <div>
               <div class="font-semibold text-white">张先生</div>
               <div class="text-sm text-slate-400">内容创作者</div>
@@ -53,7 +53,7 @@ const trustedClients = [
         </div>
         <div class="unified-card p-6">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#8B5CF6] to-[#3B82F6] flex items-center justify-center text-xl">👩‍🎨</div>
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#F59E0B] to-[#14B8A6] flex items-center justify-center text-xl">👩‍🎨</div>
             <div>
               <div class="font-semibold text-white">王女士</div>
               <div class="text-sm text-slate-400">品牌营销负责人</div>

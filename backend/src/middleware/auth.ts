@@ -9,9 +9,6 @@ export interface AuthRequest extends Request {
     email: string
     phone?: string
     name: string
-    plan: string
-    credits: number
-    is_admin?: number
   }
 }
 
@@ -28,7 +25,7 @@ export function authenticate(req: AuthRequest, res: Response, next: NextFunction
     const decoded = jwt.verify(token, config.jwt.secret) as { userId: number }
 
     const user = db.prepare(`
-      SELECT id, email, phone, name, plan, credits, is_admin
+      SELECT id, email, phone, name
       FROM users
       WHERE id = ?
     `).get(decoded.userId) as any

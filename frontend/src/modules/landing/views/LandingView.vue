@@ -13,7 +13,6 @@ import Solutions from '@/modules/landing/components/Solutions.vue'
 // import CustomerCases from '@/modules/landing/components/CustomerCases.vue'
 import InteractiveDemo from '@/modules/landing/components/InteractiveDemo.vue'
 import HowItWorks from '@/modules/landing/components/HowItWorks.vue'
-import Pricing from '@/modules/landing/components/Pricing.vue'
 import FAQ from '@/modules/landing/components/FAQ.vue'
 import BottomCTA from '@/modules/landing/components/BottomCTA.vue'
 import LandingFooter from '@/modules/landing/components/LandingFooter.vue'
@@ -92,10 +91,6 @@ onUnmounted(() => {
     
     <!-- 三步创建流程 -->
     <HowItWorks />
-    
-    <!-- 定价方案 -->
-    <Pricing />
-    
     <!-- 常见问题 -->
     <FAQ />
     

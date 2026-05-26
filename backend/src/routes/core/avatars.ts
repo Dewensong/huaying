@@ -3,7 +3,6 @@ import db from '../../db/index.js'
 import { authenticate, AuthRequest } from '../../middleware/auth.js'
 import { generateCoverImage, fixAllMissingImages } from '../../utils/avatar-cover.js'
 import { uploadBufferToCOS } from '../../config/cos.js'
-import { triggerBackgroundRemoval } from '../../services/background-remover.service.js'
 
 const router = Router()
 
@@ -131,20 +130,6 @@ router.post('/', authenticate, async (req: AuthRequest, res: Response) => {
     }
 
     console.log(`[Avatar API] 创建形象成功: ${name}, userId=${req.user!.id}`)
-
-    // 异步触发抠图服务（不阻塞响应）
-    if (imageUrl && (imageUrl.startsWith('http') || imageUrl.startsWith('/'))) {
-      console.log(`[Avatar API] 准备触发抠图服务: avatarId=${avatarId}, imageUrl=${imageUrl.substring(0, 80)}...`)
-      triggerBackgroundRemoval(avatarId, imageUrl)
-        .then(result => {
-          if (result) {
-            console.log(`[Avatar API] 抠图服务返回: success=${result.success}, imageUrl=${result.imageUrl?.substring(0, 80) || '无'}...`)
-          }
-        })
-        .catch(err => console.error('[Avatar API] 抠图触发失败:', err.message, err.stack))
-    } else {
-      console.warn(`[Avatar API] 抠图未触发: imageUrl="${imageUrl}", 不符合条件 (http 或 / 开头)`)
-    }
 
     res.status(201).json(formattedAvatar)
   } catch (error) {

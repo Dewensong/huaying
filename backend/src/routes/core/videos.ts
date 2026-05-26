@@ -1,7 +1,6 @@
 import { Router, Response } from 'express'
 import db from '../../db/index.js'
 import { authenticate, AuthRequest } from '../../middleware/auth.js'
-import { checkQuota, consumeQuota } from '../../middleware/quota.js'
 import { 
   createVideoRecord, 
   processVideoAsync 

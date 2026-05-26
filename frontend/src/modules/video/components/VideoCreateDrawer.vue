@@ -256,9 +256,7 @@ async function handleSubmit() {
         subtitleConfig: form.value.subtitleConfig?.enabled ? {
           fontSize: form.value.subtitleConfig.fontSize || 24,
           fontColor: form.value.subtitleConfig.color || '#FFFFFF'
-        } : undefined,
-        // 有形象ID时为数字人模式，否则为静态合成
-        mode: form.value.avatarId ? 'digital_human' : 'static'
+        } : undefined
       })
       results.push(result)
       

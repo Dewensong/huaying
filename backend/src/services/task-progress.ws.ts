@@ -26,13 +26,6 @@ export interface ProgressMessage {
   data?: any             // 附加数据（可选）
 }
 
-export interface QuotaMessage {
-  type: 'quota_update'
-  userId: number
-  credits: number
-  timestamp: number
-}
-
 // ============ WebSocket 服务 ============
 
 let wss: WebSocketServer | null = null
@@ -319,35 +312,3 @@ export function closeWebSocketServer(): void {
   }
 }
 
-/**
- * 推送额度变化到所有连接的客户端
- * @param userId 用户 ID
- * @param credits 当前剩余额度
- */
-export function pushQuotaUpdate(userId: number, credits: number): void {
-  if (!wss) {
-    console.warn('[WebSocket] 服务未初始化，跳过额度推送')
-    return
-  }
-
-  const message: QuotaMessage = {
-    type: 'quota_update',
-    userId,
-    credits,
-    timestamp: Date.now()
-  }
-
-  const messageStr = JSON.stringify(message)
-
-  // 广播给所有连接的客户端
-  let sentCount = 0
-  for (const client of clients) {
-    if (client.readyState === WebSocket.OPEN) {
-      client.send(messageStr)
-      sentCount++
-    }
-  }
-  if (sentCount > 0) {
-    console.log(`[WebSocket] 广播额度更新到 ${sentCount} 个客户端: userId=${userId}, credits=${credits}`)
-  }
-}

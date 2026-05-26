@@ -116,9 +116,6 @@ router.beforeEach(async (to, _from, next) => {
 
   if ((to.path === '/login' || to.path === '/register') && authStore.isAuthenticated) {
     next('/dashboard')
-  } else if (to.meta.requiresAdmin && authStore.userInfo?.is_admin !== 1) {
-    // 管理员页面权限检查
-    next('/dashboard')
   } else {
     next()
   }

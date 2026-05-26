@@ -34,11 +34,6 @@ export const config = {
   // 第三方 API 超时时间（毫秒），默认 2 分钟
   thirdPartyTimeout: parseInt(process.env.THIRD_PARTY_TIMEOUT || '120000'),
 
-  business: {
-    freeCredits: parseInt(process.env.FREE_CREDITS || '5'),
-    defaultPlan: process.env.DEFAULT_PLAN || 'free'
-  },
-
   volcanoTts: {
     appId: process.env.VOLCANO_TTS_APP_ID || '',
     accessKey: process.env.VOLCANO_TTS_ACCESS_KEY || '',
@@ -46,19 +41,5 @@ export const config = {
   },
 
   // 火山引擎声音复刻 API (V3)
-  volcanoSpeechApiKey: process.env.VOLCANO_SPEECH_API_KEY || '',
-
-  // 腾讯云数智人 aPaaS 平台服务
-  // 鉴权方式：AppKey + AccessToken（HMAC-SHA256 签名）
-  digitalHuman: {
-    appKey: process.env.DIGITAL_HUMAN_APP_KEY || '',
-    accessToken: process.env.DIGITAL_HUMAN_ACCESS_TOKEN || ''
-  },
-
-  // 腾讯云数智人服务（旧版 SecretId/SecretKey 方式，已废弃）
-  tencentDigitalHuman: {
-    secretId: process.env.TENCENT_DIGITAL_HUMAN_SECRET_ID || '',
-    secretKey: process.env.TENCENT_DIGITAL_HUMAN_SECRET_KEY || '',
-    region: process.env.TENCENT_DIGITAL_HUMAN_REGION || 'ap-beijing'
-  }
+  volcanoSpeechApiKey: process.env.VOLCANO_SPEECH_API_KEY || ''
 }

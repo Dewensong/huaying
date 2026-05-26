@@ -34,22 +34,16 @@ router.post('/register', async (req: Request, res: Response) => {
 
     // 创建用户
     const result = db.prepare(`
-      INSERT INTO users (email, password, name, phone, credits, plan)
-      VALUES (?, ?, ?, ?, ?, 'free')
-    `).run(email, hashedPassword, name, phone || null, config.business.freeCredits)
+      INSERT INTO users (email, password, name, phone)
+      VALUES (?, ?, ?, ?)
+    `).run(email, hashedPassword, name, phone || null)
 
     const userId = result.lastInsertRowid as number
-
-    // 创建订阅记录
-    db.prepare(`
-      INSERT INTO subscriptions (user_id, plan, start_date)
-      VALUES (?, 'free', datetime('now'))
-    `).run(userId)
 
     // 生成 Token
     const token = jwt.sign({ userId }, config.jwt.secret, { expiresIn: config.jwt.expiresIn } as SignOptions)
 
-    const user = db.prepare('SELECT id, email, phone, name, avatar, plan, credits FROM users WHERE id = ?').get(userId)
+    const user = db.prepare('SELECT id, email, phone, name, avatar FROM users WHERE id = ?').get(userId)
 
     res.status(201).json({ token, user })
   } catch (error) {
@@ -96,14 +90,9 @@ router.post('/login', async (req: Request, res: Response) => {
       // 如果手机号未注册，自动创建账号
       if (!user) {
         const result = db.prepare(`
-          INSERT INTO users (phone, name, credits, plan)
-          VALUES (?, ?, ?, 'free')
-        `).run(phone, `用户${phone.slice(-4)}`, config.business.freeCredits)
-
-        db.prepare(`
-          INSERT INTO subscriptions (user_id, plan, start_date)
-          VALUES (?, 'free', datetime('now'))
-        `).run(result.lastInsertRowid)
+          INSERT INTO users (phone, name)
+          VALUES (?, ?)
+        `).run(phone, `用户${phone.slice(-4)}`)
 
         user = db.prepare('SELECT * FROM users WHERE id = ?').get(result.lastInsertRowid)
       }
@@ -166,7 +155,7 @@ router.patch('/profile', authenticate, (req: AuthRequest, res: Response) => {
     db.prepare('UPDATE users SET avatar = ?, updated_at = datetime("now") WHERE id = ?').run(avatar, req.user!.id)
   }
 
-  const user = db.prepare('SELECT id, email, phone, name, avatar, plan, credits FROM users WHERE id = ?').get(req.user!.id)
+  const user = db.prepare('SELECT id, email, phone, name, avatar FROM users WHERE id = ?').get(req.user!.id)
   res.json(user)
 })
 

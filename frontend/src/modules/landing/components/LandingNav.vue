@@ -5,8 +5,7 @@ const router = useRouter()
 
 const navItems = [
   { label: '产品', id: 'features' },
-  { label: '解决方案', id: 'solutions' },
-  { label: '定价方案', id: 'pricing' }
+  { label: '解决方案', id: 'solutions' }
 ]
 
 function scrollTo(id: string) {

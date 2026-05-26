@@ -113,7 +113,6 @@ export const videoApi = {
     voiceType?: string
     background?: { type: 'color' | 'image'; value: string }
     subtitleConfig?: { fontSize?: number; fontColor?: string }
-    mode?: 'static' | 'digital_human'
   }) =>
     api.post<{ success: boolean; videoId: number; status: string; message: string }>('/core/videos/create', data),
 

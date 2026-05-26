@@ -50,7 +50,7 @@ _api.interceptors.response.use(
     if (error.response?.status === 401) {
       eventBus.showTokenExpiredOnce()
     } else if (error.response?.status === 402) {
-      ElMessage.error(message || '额度不足，请升级套餐')
+      ElMessage.error(message || '请求过于频繁，请稍后再试')
     } else if (error.response?.status === 403) {
       ElMessage.error(message || '权限不足')
     } else if (error.response?.status === 404) {

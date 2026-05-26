@@ -11,8 +11,7 @@ import ffmpeg from 'fluent-ffmpeg'
 import db from '../db/index.js'
 import { synthesizeSpeech } from './tts.service.js'
 import { uploadToCOS, getCOSKey, isCOSConfigured } from '../config/cos.js'
-import { removeBackground } from './background-remover.service.js'
-import { pushProgress, startStepProgress, stopStepProgress, pushQuotaUpdate } from './task-progress.ws.js'
+import { pushProgress, startStepProgress, stopStepProgress } from './task-progress.ws.js'
 
 // ============ 常量配置 ============
 
@@ -764,52 +763,9 @@ async function getAvatarPath(avatarId: number, userId: number): Promise<{ path: 
     console.log('[Pipeline] 步骤1完成: 本地图片路径为', downloadedLocalPath)
   }
 
-  // 抠图结果本地路径（用于最终返回）
-  let finalLocalPath = downloadedLocalPath
-  let finalHasNoBg = false
-  // 临时文件保护列表
+  const finalLocalPath = downloadedLocalPath
+  const finalHasNoBg = false
   const tempFiles: string[] = []
-
-  // ========== 步骤2：上传到COS，获取CDN URL ==========
-  console.log('[Pipeline] 步骤2: 上传图片到COS...')
-  
-  if (!isCOSConfigured()) {
-    console.log('[Pipeline] 步骤2跳过: COS未配置，无法进行抠图')
-  } else {
-    const cosKey = `temp/avatar_${avatarId}_${Date.now()}.png`
-    const cosCdnUrl = await uploadToCOS(downloadedLocalPath, cosKey)
-    console.log('[Pipeline] 步骤2完成: 图片已上传到COS, CDN URL:', cosCdnUrl)
-
-    if (!cosCdnUrl || cosCdnUrl.startsWith('/') || cosCdnUrl === downloadedLocalPath) {
-      console.log('[Pipeline] 步骤2警告: COS上传失败，跳过抠图')
-    } else {
-      // ========== 步骤3：调用抠图API ==========
-      console.log('[Pipeline] 步骤3: 调用抠图API...')
-      const bgResult = await removeBackground(cosCdnUrl)
-      console.log('[Pipeline] 步骤3结果: 抠图', bgResult.success ? '成功' : '失败', bgResult.error || '')
-
-      if (bgResult.success && bgResult.imageUrl) {
-        // ========== 步骤4：下载抠图结果到本地 ==========
-        console.log('[Pipeline] 步骤4: 下载抠图结果到本地...')
-        const noBgLocalPath = path.join(tempDir, `avatar_nobg_${avatarId}_${Date.now()}.png`)
-        const curlCmd = `curl -s -o "${noBgLocalPath}" "${bgResult.imageUrl}"`
-        await execWithTimeout(curlCmd, 60000)
-        
-        if (fs.existsSync(noBgLocalPath) && fs.statSync(noBgLocalPath).size > 1000) {
-          console.log('[Pipeline] 步骤4完成: 抠图结果已下载到', noBgLocalPath)
-          finalLocalPath = noBgLocalPath
-          finalHasNoBg = true
-          // 将抠图结果加入临时文件保护列表，确保合成完成前不会被清理
-          tempFiles.push(noBgLocalPath)
-          finalHasNoBg = true
-        } else {
-          console.log('[Pipeline] 步骤4警告: 抠图结果下载失败或文件过小，使用原图')
-        }
-      } else {
-        console.log('[Pipeline] 抠图失败，使用原图。错误:', bgResult.error)
-      }
-    }
-  }
 
   // ========== 返回最终路径 ==========
   console.log('[Pipeline] ========== getAvatarPath 结束 ==========')
@@ -1420,24 +1376,6 @@ export async function executeVideoPipeline(params: VideoPipelineParams): Promise
     // 清理 temp 目录
     cleanupTempDirectory()
 
-    // 扣减用户额度
-    if (params.userId) {
-      try {
-        const result = db.prepare('UPDATE users SET credits = credits - 1 WHERE id = ? AND credits > 0').run(params.userId)
-        if (result.changes > 0) {
-          const user = db.prepare('SELECT credits FROM users WHERE id = ?').get(params.userId) as { credits: number } | undefined
-          const remainingCredits = user?.credits ?? 0
-          console.log(`[Pipeline] 额度扣减成功，用户 ${params.userId} 剩余额度: ${remainingCredits}`)
-          // 推送额度变化到 WebSocket
-          pushQuotaUpdate(params.userId, remainingCredits)
-        } else {
-          console.warn(`[Pipeline] 额度扣减失败，用户 ${params.userId} 额度可能已为 0 或用户不存在`)
-        }
-      } catch (err) {
-        console.error('[Pipeline] 扣减额度失败:', err)
-      }
-    }
-
     return {
       success: true,
       videoUrl,
@@ -1490,9 +1428,8 @@ export function createVideoRecord(params: {
   voiceId?: number
   background?: { type: 'color' | 'image'; value: string } | string
   status?: string
-  mode?: string
 }): number {
-  const { userId, script, title, avatarId, voiceId, background, status = 'pending', mode = 'static' } = params
+  const { userId, script, title, avatarId, voiceId, background, status = 'pending' } = params
 
   const backgroundValue = background
     ? (typeof background === 'string' ? background : JSON.stringify(background))
@@ -1501,8 +1438,8 @@ export function createVideoRecord(params: {
   const videoTitle = title?.trim() || '视频_' + new Date().toLocaleString('zh-CN')
 
   const result = db.prepare(`
-    INSERT INTO videos (user_id, title, script, avatar_id, voice_id, background, status, progress, mode, video_source)
-    VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?, ?)
+    INSERT INTO videos (user_id, title, script, avatar_id, voice_id, background, status, progress)
+    VALUES (?, ?, ?, ?, ?, ?, ?, 0)
   `).run(
     userId,
     videoTitle,
@@ -1510,9 +1447,7 @@ export function createVideoRecord(params: {
     avatarId || null,
     voiceId || null,
     backgroundValue,
-    status,
-    mode,
-    mode === 'digital_human' ? 'digital_human' : 'static'
+    status
   )
 
   return result.lastInsertRowid as number

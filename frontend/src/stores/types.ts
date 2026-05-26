@@ -5,12 +5,7 @@ export interface UserInfo {
   phone?: string
   name: string
   avatar?: string
-  plan: 'free' | 'creator' | 'studio' | 'enterprise'
-  credits: number
-  creditsLimit: number
-  creditsResetAt?: string
   createdAt: string
-  is_admin?: number
 }
 
 // 登录参数

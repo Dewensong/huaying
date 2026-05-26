@@ -26,11 +26,9 @@ import scriptRoutes from './routes/core/scripts.js'
 import videoRoutes from './routes/core/videos.js'
 import templateRoutes from './routes/core/templates.js'
 import dashboardRoutes from './routes/core/dashboard.js'
-import pipelineRoutes from './routes/core/pipeline.js'
 import cosRoutes from './routes/core/cos.js'
 import uploadRoutes from './routes/core/upload.js'
 import aiRoutes from './routes/core/ai.js'
-import v1Routes from './routes/v1/index.js'
 
 const app = express()
 
@@ -61,10 +59,6 @@ app.use('/api/core/dashboard', dashboardRoutes)
 app.use('/api/core/cos', cosRoutes)
 app.use('/api/core/upload', uploadRoutes)
 app.use('/api/core/ai', aiRoutes)
-app.use('/api/pipeline', pipelineRoutes)
-
-// 对外 API v1
-app.use('/api/v1', v1Routes)
 
 // 健康检查
 app.get('/api/health', (req, res) => {
